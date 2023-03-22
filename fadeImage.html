@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes fade {
+        0% {
+          opacity: 0.2;
+        }
+        25% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .fade {
+        animation-name: fade;
+        animation-duration: 2s;
+        animation-direction: normal;
+      }
+      .mySlides {
+        display: none;
+      }
+      #slider {
+        max-width: 720px;
+        position: relative;
+        margin: auto;
+      }
+      #slider img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider">
+      <div class="mySlides fade">
+        <img src="./image/blackbird-g7dc04ce64_640.jpg" alt="oiseau" />
+      </div>
+      <div class="mySlides fade">
+        <img src="./image/turtle-g6d8bb9419_640.jpg" alt="turtle" />
+      </div>
+      <div class="mySlides fade">
+        <img src="./image/mountains-g765dceb26_640.jpg" alt="montagne" />
+      </div>
+      <div class="mySlides fade">
+        <img src="./image/dog-gc8346ce24_640.jpg" alt="chien" />
+      </div>
+    </div>
+    <script>
+      //on déclare des variables
+      let sliderIndex = 0;
+      let slides = document.getElementsByClassName("mySlides");
+
+      //on définit pour contrôler
+      console.log("tableau des slides:", slides);
+
+      //on définit une fonction
+      function showSlides() {
+        //on fait disparaitre tout les slides
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        //on affiche le slide courant
+        slides[sliderIndex].style.display = "block";
+        console.log("valeur de l'index:", sliderIndex);
+
+        //on incrémente l'index courant
+        sliderIndex++;
+
+        //si sliderIndex est supérieure ou égale à la longueur du tableau on le remet à zéro
+        if (sliderIndex >= slides.length) {
+          sliderIndex = 0;
+        }
+        //on utilise la fonction dans un time out
+        setTimeout(showSlides, 4000);
+      }
+      //on appelle la fonction
+      showSlides();
+    </script>
+  </body>
+</html>
